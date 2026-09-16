@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Laylen · UTAR DY Study Hub</title>
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<div class="app">
+  <header class="hero">
+    <div><h1>🎓 Laylen's UTAR DY Study Hub</h1><p>Personal university workspace · course files · tasks · notes · future plan</p></div>
+    <div class="target"><b>Career target</b><br>ERP / Functional Consultant · Business Analyst · BI / Data Analyst</div>
+  </header>
+
+  <div class="topbar">
+    <div class="searchwrap"><span class="searchicon">⌕</span><input id="searchBox" class="search" placeholder="Search course code or course name..."></div>
+    <button class="btn light" onclick="openAddCourse()">＋ Add Course</button>
+    <button class="btn light" onclick="exportBackup()">⇩ Backup</button>
+    <label class="btn light" style="cursor:pointer">⇧ Restore<input id="restoreInput" type="file" accept="application/json" hidden></label>
+    <button id="themeBtn" class="btn light" onclick="toggleTheme()">🌙</button>
+  </div>
+
+  <nav class="nav">
+    <button class="navbtn active" data-tab="home" onclick="showTab('home')">🏠 Dashboard</button>
+    <button class="navbtn" data-tab="courses" onclick="showTab('courses')">📚 Courses</button>
+    <button class="navbtn" data-tab="filecenter" onclick="showTab('filecenter')">🗂️ Files</button>
+    <button class="navbtn" data-tab="portfolio" onclick="showTab('portfolio')">👤 Portfolio</button>
+    <button class="navbtn" data-tab="future" onclick="showTab('future')">🗺️ Future Plan</button>
+    <button class="navbtn" data-tab="career" onclick="showTab('career')">🎯 Career</button>
+  </nav>
+
+  <section id="home" class="panel active">
+    <div class="dashboard-grid">
+      <div class="stat"><div class="stat-top"><div><strong id="statCourses">0</strong><span>Courses</span></div><div class="stat-icon">📚</div></div></div>
+      <div class="stat"><div class="stat-top"><div><strong id="statCredits">0</strong><span>Credits listed</span></div><div class="stat-icon">🎓</div></div></div>
+      <div class="stat"><div class="stat-top"><div><strong id="statFiles">0</strong><span>Saved files</span></div><div class="stat-icon">📁</div></div></div>
+      <div class="stat"><div class="stat-top"><div><strong id="statTasks">0</strong><span>Open tasks</span></div><div class="stat-icon">✅</div></div></div>
+    </div>
+
+    <div class="quick-grid">
+      <div class="card"><h3>⏰ Upcoming tasks</h3><div id="upcomingTasks"></div></div>
+      <div class="card"><h3>📦 Storage</h3><div id="storageInfo" class="tiny">Calculating browser storage...</div><div class="progressbar"><i id="storageBar" style="width:0%"></i></div><div class="notice" style="margin-top:12px">Important files should also be backed up outside the browser.</div></div>
+    </div>
+
+    <div class="card" style="margin-top:15px"><div class="section-title" style="margin:0 0 8px"><div><h2 style="font-size:16px">🕘 Recently added files</h2><p>Your newest course materials.</p></div><button class="btn soft" onclick="showTab('filecenter')">Open File Center →</button></div><div id="recentFiles"></div></div>
+    <div class="section-title"><div><h2>Current study timeline</h2><p>Click any course to open its personal workspace.</p></div><button class="btn soft" onclick="showTab('courses')">View all courses →</button></div>
+    <div id="homeSemesterGrid" class="semesters"></div>
+  </section>
+
+  <section id="courses" class="panel">
+    <div class="section-title"><div><h2>My Courses</h2><p>Browse subjects, notes and files by semester.</p></div><span class="tiny">Files are stored locally in this browser.</span></div>
+    <div class="course-toolbar">
+      <div id="courseSubnav" class="subnav">
+        <button class="chip active" data-semfilter="" onclick="setCourseFilter('')">All</button>
+        <button class="chip" data-semfilter="Y1S1" onclick="setCourseFilter('Y1S1')">Y1S1</button>
+        <button class="chip" data-semfilter="Y1S2" onclick="setCourseFilter('Y1S2')">Y1S2</button>
+        <button class="chip" data-semfilter="Y1S3" onclick="setCourseFilter('Y1S3')">Y1S3</button>
+        <button class="chip" data-semfilter="Y2S1" onclick="setCourseFilter('Y2S1')">Y2S1</button>
+      </div>
+      <div class="course-select-wrap">
+        <span class="tiny">Current view</span>
+        <select id="courseSemSelect" class="field course-select" onchange="setCourseFilter(this.value)">
+          <option value="">All semesters</option>
+          <option value="Y1S1">Y1S1</option>
+          <option value="Y1S2">Y1S2</option>
+          <option value="Y1S3">Y1S3</option>
+          <option value="Y2S1">Y2S1</option>
+        </select>
+      </div>
+    </div>
+    <div id="semesterGrid" class="semesters"></div>
+  </section>
+
+  <section id="filecenter" class="panel">
+    <div class="section-title"><div><h2>File Center</h2><p>Search every file across all your DY courses.</p></div><span id="fileCenterCount" class="tiny">0 files</span></div>
+    <div class="filecenter-toolbar">
+      <input id="globalFileSearch" class="field" placeholder="Search file name, course or category...">
+      <select id="globalSemFilter" class="field"><option value="">All semesters</option><option>Y1S1</option><option>Y1S2</option><option>Y1S3</option><option>Y2S1</option></select>
+      <select id="globalCatFilter" class="field"><option value="">All categories</option><option>Lecture</option><option>Tutorial / Practical</option><option>Assignment</option><option>Past Year</option><option>Report</option><option>Reference</option><option>Lab / Code</option><option>Exam / Quiz</option><option>Other</option></select>
+    </div>
+    <div id="globalFileList" class="global-files"></div>
+  </section>
+
+  <section id="portfolio" class="panel">
+    <div class="section-title"><div><h2>Personal Portfolio</h2><p>Your resume website is now built into the Study Hub.</p></div><span class="tiny">Open full page or preview it below.</span></div>
+    <div class="portfolio-shell">
+      <aside class="portfolio-side">
+        <h3>About this page</h3>
+        <p>This section contains your personal resume / portfolio website for internship and job applications.</p>
+        <div class="portfolio-points">
+          <div class="plan good"><b>Best use</b><small>Share for internship, portfolio and resume-style presentation.</small></div>
+          <div class="plan"><b>Includes</b><small>About, skills, projects, education, career targets and contact links.</small></div>
+          <div class="plan alt"><b>Tip</b><small>Update your email, LinkedIn and GitHub before sharing it.</small></div>
+        </div>
+        <div class="portfolio-actions">
+          <a class="btn primary" href="portfolio/index.html" target="_blank" rel="noreferrer">Open Full Portfolio</a>
+          <button class="btn light" onclick="document.getElementById('portfolioFrame').contentWindow.print()">Print / Save PDF</button>
+        </div>
+      </aside>
+      <div class="portfolio-frame-wrap">
+        <iframe id="portfolioFrame" class="portfolio-frame" src="portfolio/index.html" title="Laylen Portfolio Website"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <section id="future" class="panel">
+    <div class="section-title"><div><h2>Future study plan</h2><p>Goal: finish on time and place internship in the final semester.</p></div></div>
+    <div class="future">
+      <div class="futurecol"><h3>Y2S2</h3>
+        <div class="plan"><b>MPU34110 Managing Personal Finance</b><small>Plan B: Work Ethics & EQ</small></div>
+        <div class="plan"><b>UBAF1043 Business Accounting</b><small>Plan B: Principles of Marketing</small></div>
+        <div class="plan"><b>UCCD2502 Inventive Problem Solving & Proposal Writing</b></div>
+        <div class="plan"><b>UCCT2513 Mini Project</b></div>
+      </div>
+      <div class="futurecol"><h3>Y2S3</h3>
+        <div class="plan good"><b>Move eligible Y3 subjects forward</b><small>Use this semester to clear subjects before the final internship semester.</small></div>
+        <div class="plan"><b>Priority</b><small>Digital Entrepreneurship · Web Technology · MPU1 · eligible Option/Field elective.</small></div>
+        <div class="plan alt"><b>Plan B</b><small>If a subject is not offered, take another eligible Y3 subject with prerequisite met.</small></div>
+      </div>
+      <div class="futurecol"><h3>Y3S1 → Y3S2</h3>
+        <div class="plan"><b>Project I → Project II</b><small>Keep the FYP sequence on track.</small></div>
+        <div class="plan"><b>Best-fit electives</b><small>BI · Big Data · Database · IT Control & Audit · AI for Business.</small></div>
+      </div>
+      <div class="futurecol"><h3>Y3S3</h3>
+        <div class="plan good"><b>Industrial Training ONLY</b><small>Final-semester internship target.</small></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="career" class="panel">
+    <div class="section-title"><div><h2>Career targets</h2><p>Subjects and skills should support these three paths.</p></div></div>
+    <div class="career">
+      <div class="card"><div class="rank">1</div><h3>ERP / Functional Consultant</h3><p>Business process + system configuration + client requirements.</p><div class="skilltags"><span>ERPNext / SAP</span><span>Accounting</span><span>Business Process</span><span>SQL</span></div></div>
+      <div class="card"><div class="rank">2</div><h3>Business Analyst</h3><p>Translate business needs into systems, requirements and process improvements.</p><div class="skilltags"><span>Requirements</span><span>Process Mapping</span><span>SQL</span><span>Presentation</span></div></div>
+      <div class="card"><div class="rank">3</div><h3>BI / Data Analyst</h3><p>Turn operational data into dashboards and useful business decisions.</p><div class="skilltags"><span>Power BI</span><span>Excel</span><span>SQL</span><span>Data Analysis</span></div></div>
+    </div>
+  </section>
+</div>
+
+<div id="overlay" class="overlay" onclick="closeDrawer()"></div>
+<aside id="drawer" class="drawer">
+  <div class="drawer-head">
+    <div><div id="drawerCode" class="code"></div><h2 id="drawerTitle">Course</h2><div id="drawerMeta" class="credit"></div></div>
+    <button class="close" onclick="closeDrawer()">×</button>
+  </div>
+  <div class="drawer-body">
+    <div class="drawer-tabs">
+      <button class="dtab active" data-dtab="files" onclick="showDrawerTab('files')">📁 Files</button>
+      <button class="dtab" data-dtab="tasks" onclick="showDrawerTab('tasks')">✅ Tasks</button>
+      <button class="dtab" data-dtab="notes" onclick="showDrawerTab('notes')">📝 Notes</button>
+    </div>
+
+    <section id="d-files" class="dpanel active">
+      <div class="section"><h3>Upload course files</h3>
+        <div class="row"><select id="fileCategory" class="field"><option>Lecture</option><option>Tutorial / Practical</option><option>Assignment</option><option>Past Year</option><option>Report</option><option>Reference</option><option>Lab / Code</option><option>Exam / Quiz</option><option>Other</option></select><input id="fileInput" type="file" class="field" multiple></div>
+        <div id="dropzone" class="drop" style="margin-top:10px"><b>Drop files here</b><br><span class="tiny">PDF · Word · PowerPoint · ZIP · images · code files</span></div>
+      </div>
+      <div class="section"><h3>Saved files</h3><div id="fileList" class="files"></div></div>
+      <div class="notice">Files stay in this browser using IndexedDB. Use Backup if you want to move everything to another browser/computer.</div>
+    </section>
+
+    <section id="d-tasks" class="dpanel">
+      <div class="section"><h3>Add assignment / exam / reminder</h3>
+        <div class="row"><input id="taskTitle" class="field" placeholder="e.g. Assignment 2"><input id="taskDue" class="field" type="date"></div>
+        <div style="margin-top:8px"><button class="btn primary" onclick="addTask()">＋ Add Task</button></div>
+      </div>
+      <div class="section"><h3>Course tasks</h3><div id="taskList"></div></div>
+    </section>
+
+    <section id="d-notes" class="dpanel">
+      <div class="section"><h3>Personal notes</h3><textarea id="courseNotes" class="field" rows="11" placeholder="Important topics, lecturer tips, exam focus, links, reminders..."></textarea><div style="display:flex;align-items:center;gap:8px;margin-top:8px"><button class="btn primary" onclick="saveNotes()">Save Notes</button><span id="noteSaveState" class="tiny">Auto-save enabled</span></div></div>
+    </section>
+  </div>
+</aside>
+
+<div id="addOverlay" class="overlay" onclick="closeAddCourse()"></div>
+<aside id="addDrawer" class="drawer">
+  <div class="drawer-head"><div><div class="code">CUSTOM</div><h2>Add Course</h2></div><button class="close" onclick="closeAddCourse()">×</button></div>
+  <div class="drawer-body">
+    <div class="section"><label class="tiny">Semester</label><select id="newSem" class="field"><option>Y1S1</option><option>Y1S2</option><option>Y1S3</option><option>Y2S1</option></select></div>
+    <div class="section"><label class="tiny">Course code</label><input id="newCode" class="field" placeholder="e.g. UABC1233"></div>
+    <div class="section"><label class="tiny">Course name</label><input id="newName" class="field" placeholder="Course name"></div>
+    <div class="section"><label class="tiny">Credits</label><input id="newCredit" class="field" type="number" min="0" step="0.5" value="3"></div>
+    <button class="btn primary" onclick="addCustomCourse()">Add Course</button>
+  </div>
+</aside>
+<div id="toast" class="toast">Saved</div>
+
+<script src="script.js"></script>
+</body>
+</html>
