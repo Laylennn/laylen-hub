@@ -8,13 +8,10 @@ const studyHubExtraSemesters = [
 ];
 
 studyHubExtraSemesters.forEach(semester => {
-  if (!baseSemesters.some(existing => existing.id === semester.id)) {
-    baseSemesters.push(semester);
-  }
+  if (!baseSemesters.some(existing => existing.id === semester.id)) baseSemesters.push(semester);
 });
 
 const studyHubSemesterIds = baseSemesters.map(s => s.id);
-
 function addSemesterOptions(selectId) {
   const select = document.getElementById(selectId);
   if (!select) return;
@@ -27,7 +24,6 @@ function addSemesterOptions(selectId) {
     }
   });
 }
-
 ['courseSemSelect', 'globalSemFilter', 'newSem'].forEach(addSemesterOptions);
 
 const courseSubnav = document.getElementById('courseSubnav');
@@ -44,7 +40,6 @@ if (courseSubnav) {
   });
 }
 
-// Google Drive folders. Files saved there are available across devices.
 const studyHubMainDrive = 'https://drive.google.com/drive/folders/1S3ax_RXEeQ0hTqs3LyuiJwh3j2S6bCCE';
 const studyHubDriveFolders = {
   Y1S1: 'https://drive.google.com/drive/folders/14NwA1nZfa9_1sf8Bw4cR0_GTXvukU90a',
@@ -58,11 +53,37 @@ const studyHubDriveFolders = {
   Y3S3: 'https://drive.google.com/drive/folders/1v5XFDneCGGKsUm0mqaENk-NVCt_06-zP'
 };
 
+const studyHubCourseDriveFolders = {
+  UBMM1011: 'https://drive.google.com/drive/folders/14Fi9H4ZXb03iHnQ3ZdHpCKZ2z-HdNauO',
+  UCCB1013: 'https://drive.google.com/drive/folders/1Fo96i1ULXEXim93hucATFOGDp4c-YPm7',
+  UCCD1203: 'https://drive.google.com/drive/folders/1fnludjLPaGfatAyddN-3Zt7092RFcbfU',
+  UCCM2433: 'https://drive.google.com/drive/folders/1XykC9ZhbLvU3yX_kKzOOOt1Tx4ewL8ej',
+  UCCN1004: 'https://drive.google.com/drive/folders/1ytSpsYHl2Fvt8dbg4aK4J5vtZGOioT8t',
+  UCCT1013: 'https://drive.google.com/drive/folders/1MYMOHTsLViwgc2jX5_0KU9dXLNv-syzI',
+  MPU32143: 'https://drive.google.com/drive/folders/1tjv-dhY-4UKH4DoPub37-hI3K1IeWR6m',
+  MPU33013: 'https://drive.google.com/drive/folders/1metJ-Tx4RUdV-E6srG4Us8zmkTZvbym5',
+  UCCT2153: 'https://drive.google.com/drive/folders/1ZTDq-jm348CPQkKmio-z3WdAwdgrs291',
+  MPU3182: 'https://drive.google.com/drive/folders/1sCzZ2WjaPuj9dUUa_45cpyThwODHH60L',
+  UCCD1133: 'https://drive.google.com/drive/folders/1OOOU_Ik-RPQLCdVh302vUg2VaQHTX41l',
+  UCCD3013: 'https://drive.google.com/drive/folders/1aanKQ1-FD_B-n_OjFxSeFXdP4f5EIA-4',
+  UCCN1223: 'https://drive.google.com/drive/folders/1zMYV2rW33IHQSePDI_xl_kcIIOsiTcUw',
+  UCCT1104: 'https://drive.google.com/drive/folders/11NtFqZwK3HTo54KPATQ2IrDorGiXK4JL',
+  UCCT2103: 'https://drive.google.com/drive/folders/10S52QYkNsWztvW7zSIncqmuZknoJNa6N',
+  UCCB1223: 'https://drive.google.com/drive/folders/14alxmToPBOE7yLRp1Hvm0YgNzyGjlJYH',
+  UCCB3133: 'https://drive.google.com/drive/folders/173uw0afa8Lbc6yJYxy5R0DyX-CU4nbYB',
+  UCCD2323: 'https://drive.google.com/drive/folders/1_JH5g30oSJY-wqINmYHUW7gwQqi-_Cxr',
+  UCCD3253: 'https://drive.google.com/drive/folders/1Kms8Al7ymhPbKObd1Fg3mA6JFYnHy8s7',
+  UCCT1113: 'https://drive.google.com/drive/folders/1dq0rvSKHDr85C5bOrcfLkFAacPeY0vty',
+  UBMM2013: 'https://drive.google.com/drive/folders/1i088t3zWosELidGSt1gmFYInyeK4BU8Z'
+};
+
 function openSemesterDrive(sem) {
   window.open(studyHubDriveFolders[sem] || studyHubMainDrive, '_blank', 'noopener,noreferrer');
 }
+function openCourseDrive(c) {
+  window.open(studyHubCourseDriveFolders[c.code] || studyHubDriveFolders[c.sem] || studyHubMainDrive, '_blank', 'noopener,noreferrer');
+}
 
-// Show future semesters as Planned and add a Drive shortcut to every semester.
 semesterHTML = function(s, compact = false) {
   const total = s.courses.reduce((a, c) => a + Number(c[2]), 0);
   const wrap = document.createElement('div');
@@ -76,7 +97,7 @@ semesterHTML = function(s, compact = false) {
     el.className = 'course';
     el.dataset.search = (c[0] + ' ' + c[1]).toLowerCase();
     el.dataset.id = id;
-    el.innerHTML = `<div class="course-top"><span class="code">${esc(c[0])}</span><span class="credit">${c[2]} cr</span></div><div class="course-name">${esc(c[1])}</div><div class="pills"><span class="pill">${esc(c[3])}</span><span class="pill file">☁️ Drive</span><span class="pill task" id="taskcount-${cssSafe(id)}">0 tasks</span></div>`;
+    el.innerHTML = `<div class="course-top"><span class="code">${esc(c[0])}</span><span class="credit">${c[2]} cr</span></div><div class="course-name">${esc(c[1])}</div><div class="pills"><span class="pill">${esc(c[3])}</span><span class="pill file">☁️ Course Folder</span><span class="pill task" id="taskcount-${cssSafe(id)}">0 tasks</span></div>`;
     el.onclick = () => openCourse({ sem: s.id, code: c[0], name: c[1], credit: c[2], type: c[3], id });
     wrap.appendChild(el);
   });
@@ -89,24 +110,24 @@ semesterHTML = function(s, compact = false) {
   return wrap;
 };
 
-// Keep tasks and notes in the drawer, but use Drive as the primary file location.
 const studyHubOpenCourseLocal = openCourse;
 openCourse = function(c) {
   studyHubOpenCourseLocal(c);
   const panel = document.getElementById('d-files');
   if (!panel) return;
+  const hasOwnFolder = Boolean(studyHubCourseDriveFolders[c.code]);
   panel.innerHTML = `
     <div class="section">
-      <h3>☁️ Google Drive Cloud Files</h3>
-      <p class="tiny" style="margin:6px 0 12px">Files saved here remain available after changing computer or browser.</p>
+      <h3>☁️ ${esc(c.code)} Cloud Folder</h3>
+      <p class="tiny" style="margin:6px 0 12px">Each course has its own folder, so your files stay organised and available on other computers.</p>
       <div style="display:flex;gap:8px;flex-wrap:wrap">
-        <button class="btn primary" id="openSemesterDriveBtn">Open ${esc(c.sem)} Drive Folder</button>
-        <button class="btn light" id="openStudyHubDriveBtn">Open Main Study Hub Drive</button>
+        <button class="btn primary" id="openCourseDriveBtn">Open ${esc(c.code)} Folder</button>
+        <button class="btn light" id="openSemesterDriveBtn">Open ${esc(c.sem)} Folder</button>
       </div>
-      <div class="notice" style="margin-top:12px">Upload the file in Google Drive. Keep General access as <b>Restricted</b> so other people cannot see your course files.</div>
+      <div class="notice" style="margin-top:12px">${hasOwnFolder ? 'Upload files for this course inside this folder.' : 'This future/custom course will use the semester folder until its own folder is created.'} Keep General access as <b>Restricted</b>.</div>
     </div>`;
+  document.getElementById('openCourseDriveBtn').onclick = () => openCourseDrive(c);
   document.getElementById('openSemesterDriveBtn').onclick = () => openSemesterDrive(c.sem);
-  document.getElementById('openStudyHubDriveBtn').onclick = () => window.open(studyHubMainDrive, '_blank', 'noopener,noreferrer');
 };
 
 function renderDriveFileCenter() {
@@ -115,24 +136,26 @@ function renderDriveFileCenter() {
   const toolbar = document.querySelector('.filecenter-toolbar');
   if (toolbar) toolbar.style.display = 'none';
   const count = document.getElementById('fileCenterCount');
-  if (count) count.textContent = 'Google Drive cloud storage';
+  if (count) count.textContent = Object.keys(studyHubCourseDriveFolders).length + ' course folders';
   list.innerHTML = '';
-  Object.entries(studyHubDriveFolders).forEach(([sem, url]) => {
-    const row = document.createElement('div');
-    row.className = 'file-row';
-    row.innerHTML = `<div><div class="file-title">☁️ ${sem} Google Drive</div><div class="file-meta">Cloud files · available across devices</div></div><div class="actions"><button class="mini">Open Drive</button></div>`;
-    row.querySelector('button').onclick = () => window.open(url, '_blank', 'noopener,noreferrer');
-    list.appendChild(row);
+  allSemesters().forEach(s => {
+    s.courses.forEach(c => {
+      const url = studyHubCourseDriveFolders[c[0]];
+      if (!url) return;
+      const row = document.createElement('div');
+      row.className = 'file-row';
+      row.innerHTML = `<div><div class="file-title">☁️ ${esc(c[0])} · ${esc(c[1])}</div><div class="file-meta">${esc(s.id)} · dedicated Google Drive folder</div></div><div class="actions"><button class="mini">Open Folder</button></div>`;
+      row.querySelector('button').onclick = () => window.open(url, '_blank', 'noopener,noreferrer');
+      list.appendChild(row);
+    });
   });
 }
-
 renderFileCenter = renderDriveFileCenter;
 
-// Update wording so it is clear files are cloud-based.
 const courseStorageText = document.querySelector('#courses .section-title .tiny');
-if (courseStorageText) courseStorageText.textContent = 'Course files use Google Drive cloud storage.';
+if (courseStorageText) courseStorageText.textContent = 'Each course uses its own Google Drive folder.';
 const storageInfo = document.getElementById('storageInfo');
-if (storageInfo) storageInfo.textContent = '☁️ Google Drive connected · available across your devices';
+if (storageInfo) storageInfo.textContent = '☁️ Google Drive connected · one folder per course';
 const storageBar = document.getElementById('storageBar');
 if (storageBar && storageBar.parentElement) storageBar.parentElement.style.display = 'none';
 
