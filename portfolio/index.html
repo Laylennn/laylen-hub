@@ -3,105 +3,154 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Laylen — Digital Economy Technology student academic portfolio and resume." />
-  <title>Laylen — Academic Portfolio</title>
+  <meta name="description" content="Laylen — Digital Economy Technology student portfolio and resume." />
+  <title>Laylen — Portfolio</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <header class="topbar">
-    <div class="topbar-inner">
-      <a class="name-mark" href="#top">Laylen</a>
-      <nav class="topnav">
-        <a href="#profile">Profile</a>
-        <a href="#interests">Interests</a>
-        <a href="#work">Academic Work</a>
+  <header class="site-header">
+    <div class="nav-wrap">
+      <a class="brand" href="#top">Laylen</a>
+      <nav class="nav">
+        <a href="#about">About</a>
+        <a href="#work">Work</a>
+        <a href="#skills">Skills</a>
         <a href="#education">Education</a>
         <a href="#contact">Contact</a>
       </nav>
-      <div class="actions"><button id="themeBtn" class="icon-btn" type="button">☾</button><button id="editBtn" class="edit-btn" type="button">Edit</button></div>
+      <div class="header-actions">
+        <button id="themeBtn" class="icon-btn" type="button">☾</button>
+        <button id="editBtn" class="edit-btn" type="button">Edit profile</button>
+      </div>
     </div>
   </header>
 
-  <main id="top" class="page-shell">
-    <aside class="profile-aside">
-      <div class="portrait-placeholder">L</div>
-      <h1>Laylen</h1>
-      <p class="role">Digital Economy Technology Student</p>
-      <p class="affiliation">Universiti Tunku Abdul Rahman (UTAR)</p>
-      <div class="aside-links">
-        <a id="emailLink" href="mailto:your-email@example.com"><span>Email</span><b id="emailText">your-email@example.com</b></a>
-        <a id="linkedinLink" href="#" target="_blank" rel="noreferrer"><span>LinkedIn</span><b id="linkedinText">Add LinkedIn URL</b></a>
-        <a id="githubLink" href="#" target="_blank" rel="noreferrer"><span>GitHub</span><b id="githubText">Add GitHub URL</b></a>
+  <main id="top">
+    <section class="hero shell">
+      <div class="hero-copy">
+        <p class="eyebrow">UTAR · Digital Economy Technology</p>
+        <h1>Hi, I’m Laylen.<br><span>I work where business meets technology.</span></h1>
+        <p class="hero-lead" id="heroTitle">I build practical business-tech solutions and I’m working toward ERP, Business Analysis and BI/Data roles.</p>
+        <div class="hero-actions">
+          <a class="primary-btn" href="#work">View selected work</a>
+          <button class="text-btn" onclick="window.print()" type="button">Download résumé ↗</button>
+        </div>
       </div>
-      <button class="cv-btn" type="button" onclick="window.print()">Download CV</button>
-    </aside>
 
-    <div class="content-column">
-      <section id="profile" class="resume-section hero-section">
-        <p class="section-label">Profile</p>
-        <h2>Business systems, data and practical technology.</h2>
-        <p class="lead" id="heroTitle">I build practical business-tech solutions and I’m working toward ERP, Business Analysis and BI/Data roles.</p>
-        <p>I am pursuing a Bachelor of Information Systems (Honours) — Digital Economy Technology at UTAR. My interests sit at the intersection of business processes, enterprise systems, analytics and implementation.</p>
-      </section>
-
-      <section id="interests" class="resume-section">
-        <p class="section-label">Professional Interests</p>
-        <div class="interest-grid">
-          <article><h3>Enterprise Systems</h3><p>ERP, process design, implementation workflows and functional consulting.</p></article>
-          <article><h3>Business Analysis</h3><p>Requirements, process improvement, stakeholder needs and system thinking.</p></article>
-          <article><h3>Business Intelligence</h3><p>Power BI, Excel, analytics, forecasting and data-driven decision support.</p></article>
+      <aside class="identity-card">
+        <div class="portrait">L</div>
+        <div class="identity-copy">
+          <span class="availability">● Open to internship opportunities</span>
+          <h2>Laylen</h2>
+          <p>Bachelor of Information Systems (Honours)<br>Digital Economy Technology</p>
+          <strong>Universiti Tunku Abdul Rahman</strong>
         </div>
-      </section>
+        <div class="identity-links">
+          <a id="emailLink" href="mailto:your-email@example.com"><span>Email</span><b id="emailText">your-email@example.com</b></a>
+          <a id="linkedinLink" href="#" target="_blank" rel="noreferrer"><span>LinkedIn</span><b id="linkedinText">Add LinkedIn URL</b></a>
+          <a id="githubLink" href="#" target="_blank" rel="noreferrer"><span>GitHub</span><b id="githubText">Add GitHub URL</b></a>
+        </div>
+      </aside>
+    </section>
 
-      <section id="work" class="resume-section">
-        <p class="section-label">Selected Academic Work</p>
-        <div class="academic-list">
-          <article class="academic-item">
-            <div class="year">2026</div>
-            <div><h3>LEMP Web Stack & Live Chat Integration</h3><p>Configured Ubuntu Server and integrated Amado with LiveHelperChat, including visitor/operator testing, deployment access and troubleshooting.</p><div class="tags"><span>Ubuntu</span><span>LEMP</span><span>VirtualBox</span><span>LiveHelperChat</span></div></div>
+    <section id="about" class="section shell">
+      <div class="section-index">01</div>
+      <div class="section-body intro-grid">
+        <div>
+          <p class="eyebrow">About</p>
+          <h2>Practical, curious, and focused on useful systems.</h2>
+        </div>
+        <div class="body-copy">
+          <p>I’m studying <strong>Bachelor of Information Systems (Honours) — Digital Economy Technology</strong> at UTAR.</p>
+          <p>I’m most interested in how business requirements become working systems, how data supports decisions, and how technology can simplify real processes.</p>
+          <p>I learn best by building, testing and improving things rather than only reading about them.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="work" class="section shell">
+      <div class="section-index">02</div>
+      <div class="section-body">
+        <div class="section-heading">
+          <div><p class="eyebrow">Selected Work</p><h2>Academic projects with practical outcomes.</h2></div>
+          <p>Coursework presented as concise case studies rather than a long list.</p>
+        </div>
+
+        <div class="featured-project">
+          <div class="feature-copy">
+            <div class="project-meta"><span>Infrastructure / Web</span><span>2026</span></div>
+            <h3>LEMP Web Stack & Live Chat Integration</h3>
+            <p>Configured an Ubuntu Server environment and integrated Amado with LiveHelperChat. The work included deployment access, troubleshooting and an end-to-end visitor/operator chat test.</p>
+            <div class="tags"><span>Ubuntu</span><span>LEMP</span><span>VirtualBox</span><span>LiveHelperChat</span></div>
+          </div>
+          <div class="feature-visual terminal-card">
+            <div class="window-dots"><i></i><i></i><i></i></div>
+            <code>$ ssh ubuntu@server<br>$ systemctl status nginx<br><span>● active (running)</span><br><br>/amado<br>/livehelperchat</code>
+          </div>
+        </div>
+
+        <div class="project-grid">
+          <article class="project-card">
+            <div class="project-meta"><span>Analytics</span><span>2026</span></div>
+            <h3>Business Analytics Coursework</h3>
+            <p>Forecasting, moving averages, exponential smoothing, K-means clustering and business-oriented interpretation.</p>
+            <div class="tags"><span>Power BI</span><span>Forecasting</span><span>K-means</span></div>
           </article>
-          <article class="academic-item">
-            <div class="year">2026</div>
-            <div><h3>Business Analytics Coursework</h3><p>Applied forecasting, moving averages, exponential smoothing, K-means clustering and business-oriented interpretation.</p><div class="tags"><span>Power BI</span><span>Forecasting</span><span>K-means</span></div></div>
+          <article class="project-card">
+            <div class="project-meta"><span>Enterprise Systems</span><span>2026</span></div>
+            <h3>ERPNext Business Process Work</h3>
+            <p>Explored how operational business processes are represented and managed inside an ERP environment.</p>
+            <div class="tags"><span>ERPNext</span><span>ERP</span><span>Business Process</span></div>
           </article>
-          <article class="academic-item">
-            <div class="year">2026</div>
-            <div><h3>ERPNext Business Process Work</h3><p>Used ERPNext to explore how operational processes are represented and managed inside an enterprise system.</p><div class="tags"><span>ERPNext</span><span>ERP</span><span>Business Process</span></div></div>
-          </article>
-          <article class="academic-item">
-            <div class="year">2025–26</div>
-            <div><h3>Digital Supply Chain Simulation</h3><p>Worked with demand, stock, supplier selection and status tracking in a digital supply-chain workflow.</p><div class="tags"><span>Supply Chain</span><span>Operations</span><span>Digital Business</span></div></div>
+          <article class="project-card wide-card">
+            <div class="project-meta"><span>Digital Business</span><span>2025–26</span></div>
+            <h3>Digital Supply Chain Simulation</h3>
+            <p>Worked with demand, stock, supplier decisions and status tracking in a digital supply-chain workflow.</p>
+            <div class="tags"><span>Supply Chain</span><span>Operations</span><span>Digital Business</span></div>
           </article>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <section class="resume-section">
-        <p class="section-label">Technical Skills</p>
-        <div class="skills-table">
-          <div><span>Business Systems</span><p>ERPNext, business processes, enterprise systems, requirements thinking</p></div>
-          <div><span>Data & Analytics</span><p>Power BI, Excel, forecasting, clustering, SQL learning</p></div>
-          <div><span>Web & Programming</span><p>HTML, CSS, JavaScript, Bootstrap, Python, C# / UWP</p></div>
-          <div><span>Infrastructure</span><p>Ubuntu Server, VirtualBox, SSH, LEMP stack basics</p></div>
+    <section id="skills" class="section shell">
+      <div class="section-index">03</div>
+      <div class="section-body">
+        <div class="section-heading"><div><p class="eyebrow">Skills</p><h2>What I’m building now.</h2></div></div>
+        <div class="skills-grid">
+          <article><span>01</span><h3>Business Systems</h3><p>ERPNext, enterprise systems, business processes, requirements thinking.</p></article>
+          <article><span>02</span><h3>Data & BI</h3><p>Power BI, Excel, forecasting, clustering and SQL learning.</p></article>
+          <article><span>03</span><h3>Web & Programming</h3><p>HTML, CSS, JavaScript, Bootstrap, Python and C# / UWP.</p></article>
+          <article><span>04</span><h3>Infrastructure</h3><p>Ubuntu Server, VirtualBox, SSH and LEMP stack basics.</p></article>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <section id="education" class="resume-section">
-        <p class="section-label">Education</p>
-        <div class="education-row">
-          <div class="year">Current</div>
-          <div><h3>Universiti Tunku Abdul Rahman (UTAR)</h3><p>Bachelor of Information Systems (Honours) — Digital Economy Technology</p><p class="muted">Expected graduation: 2028</p><div class="tags"><span>Business Analytics</span><span>Enterprise Systems</span><span>Front-End Web</span><span>RAD</span><span>Cybersecurity</span><span>FinTech</span><span>Operations Management</span></div></div>
+    <section id="education" class="section shell">
+      <div class="section-index">04</div>
+      <div class="section-body">
+        <p class="eyebrow">Education</p>
+        <div class="education-card">
+          <div class="edu-date">Current<br><span>Expected 2028</span></div>
+          <div>
+            <h2>Universiti Tunku Abdul Rahman</h2>
+            <p>Bachelor of Information Systems (Honours) — Digital Economy Technology</p>
+            <div class="tags course-tags"><span>Business Analytics</span><span>Enterprise Systems</span><span>Front-End Web</span><span>RAD</span><span>Cybersecurity</span><span>FinTech</span><span>Digital Supply Chain</span><span>Operations Management</span></div>
+          </div>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <section id="contact" class="resume-section contact-block">
-        <p class="section-label">Contact</p>
-        <h2>Open to internship opportunities.</h2>
-        <p>Interested in ERP, business analysis, BI and data-related roles where business and technology meet.</p>
-      </section>
-
-      <footer>© <span id="year"></span> Laylen · Academic Portfolio</footer>
-    </div>
+    <section id="contact" class="contact-section">
+      <div class="shell contact-inner">
+        <p class="eyebrow light">Contact</p>
+        <h2>Let’s work on something useful.</h2>
+        <p>Open to internship opportunities in ERP, Business Analysis, BI and data-related roles.</p>
+        <button class="contact-btn" type="button" onclick="document.getElementById('editBtn').click()">Add my contact details</button>
+      </div>
+    </section>
   </main>
+
+  <footer class="footer shell"><span>© <span id="year"></span> Laylen</span><span>Portfolio · Resume</span></footer>
 
   <div id="modalBackdrop" class="modal-backdrop" hidden>
     <div class="modal">
@@ -112,7 +161,7 @@
         <label>LinkedIn URL<input id="editLinkedin" type="url" placeholder="https://www.linkedin.com/in/..."></label>
         <label>GitHub URL<input id="editGithub" type="url" placeholder="https://github.com/..."></label>
       </div>
-      <div class="modal-actions"><button id="resetProfile" class="edit-btn" type="button">Reset</button><button id="saveProfile" class="cv-btn" type="button">Save changes</button></div>
+      <div class="modal-actions"><button id="resetProfile" class="edit-btn" type="button">Reset</button><button id="saveProfile" class="primary-btn" type="button">Save changes</button></div>
       <p class="privacy-note">Saved only in this browser using localStorage.</p>
     </div>
   </div>
