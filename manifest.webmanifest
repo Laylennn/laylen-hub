@@ -1,0 +1,23 @@
+{
+  "name": "Laylen's UTAR DY Study Hub",
+  "short_name": "Study Hub",
+  "description": "Personal university workspace: courses, files, tasks, notes and future plan.",
+  "id": "./",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#f5f7fb",
+  "theme_color": "#15395f",
+  "lang": "en",
+  "categories": ["education", "productivity"],
+  "icons": [
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icons/maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ],
+  "shortcuts": [
+    { "name": "Courses", "url": "./index.html#courses", "icons": [{ "src": "icons/icon-192.png", "sizes": "192x192" }] },
+    { "name": "Files", "url": "./index.html#filecenter", "icons": [{ "src": "icons/icon-192.png", "sizes": "192x192" }] }
+  ]
+}

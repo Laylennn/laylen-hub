@@ -2,7 +2,16 @@
 <html lang="en">
 <head>
 <meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="theme-color" content="#15395f" />
+<meta name="description" content="Laylen's personal UTAR DY study workspace: courses, files, tasks, notes and future plan." />
+<meta name="mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="apple-mobile-web-app-title" content="Study Hub" />
+<link rel="manifest" href="manifest.webmanifest" />
+<link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32.png" />
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png" />
 <title>Laylen · UTAR DY Study Hub</title>
 <link rel="stylesheet" href="styles.css" />
 </head>
@@ -19,6 +28,7 @@
     <button class="btn light" onclick="exportBackup()">⇩ Backup</button>
     <label class="btn light" style="cursor:pointer">⇧ Restore<input id="restoreInput" type="file" accept="application/json" hidden></label>
     <button id="themeBtn" class="btn light" onclick="toggleTheme()">🌙</button>
+    <button id="installBtn" class="btn primary" hidden>📲 Install App</button>
   </div>
 
   <nav class="nav">
@@ -189,5 +199,6 @@
 
 <script src="script.js"></script>
 <script src="semester-extension.js"></script>
+<script src="pwa.js"></script>
 </body>
 </html>
