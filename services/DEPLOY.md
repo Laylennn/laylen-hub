@@ -6,7 +6,9 @@ Fill in your WhatsApp number and email in `services/script.js` **before** you de
 ## Option A: Cloudflare Pages (recommended, updates itself)
 Free. Every time you push to GitHub, the live page updates by itself.
 1. Sign up at **pages.cloudflare.com** (free).
-2. **Workers & Pages → Create → Pages → Connect to Git**, then pick the `laylen-hub` repository.
+2. **Workers & Pages → Create application → Pages → Connect to Git**.
+   GitHub asks you to install the Cloudflare app: choose **Only select repositories** → `laylen-hub`.
+   Then pick the `laylen-hub` repository. (If the buttons are named a bit differently, look for "Pages" and "Connect to Git".)
 3. Settings:
    - Production branch: `main`
    - Framework preset: **None**
