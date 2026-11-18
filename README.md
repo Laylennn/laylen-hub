@@ -10,3 +10,7 @@ After you install it, the app opens full-screen with its own icon and works offl
 Files, notes and tasks are saved in that device's browser, so use **⇩ Backup** to keep a copy.
 
 When you change app files, bump `CACHE_VERSION` in `sw.js` so installed copies update.
+
+## Earn money: services page
+`services/index.html` is a freelance page for selling websites and dashboards to small businesses (prices in RM, WhatsApp quote form).
+Put your WhatsApp number and email at the top of `services/script.js`, then follow `services/GET-CLIENTS.md`.
