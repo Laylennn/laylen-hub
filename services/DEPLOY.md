@@ -32,6 +32,8 @@ Build output directory **`services`**. The address is then `https://laylen-studi
    To update it later, drag the folder in again under **Deploys**.
 
 ## After it's live
+Live address: **https://laylen-studio.jinlimw.workers.dev** (deployed from `main` automatically).
+
 - Open the link on your phone and tap **WhatsApp me**. Check that the message arrives on your WhatsApp.
 - Make sure the yellow "Setup needed" bar is **gone**. If you still see it, the number in `script.js` isn't filled in correctly.
 - Put the link in your WhatsApp Business profile, Instagram bio and LinkedIn.
