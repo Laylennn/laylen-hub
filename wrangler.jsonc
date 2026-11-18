@@ -1,0 +1,9 @@
+// Cloudflare deploy settings: publishes only the services/ folder as a static site.
+// The "name" must match the project name typed in the Cloudflare dashboard.
+{
+  "name": "laylen-studio",
+  "compatibility_date": "2026-11-01",
+  "assets": {
+    "directory": "./services"
+  }
+}

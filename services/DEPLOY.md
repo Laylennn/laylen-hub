@@ -3,19 +3,25 @@
 The `services` folder is self-contained: everything the page needs is inside it.
 Fill in your WhatsApp number and email in `services/script.js` **before** you deploy.
 
-## Option A: Cloudflare Pages (recommended, updates itself)
+## Option A: Cloudflare (recommended, updates itself)
 Free. Every time you push to GitHub, the live page updates by itself.
-1. Sign up at **pages.cloudflare.com** (free).
-2. **Workers & Pages → Create application → Pages → Connect to Git**.
+The repo has a `wrangler.jsonc` file that tells Cloudflare to publish only the `services` folder.
+Notes ending in `.md` stay private (see `services/.assetsignore`).
+
+1. Sign up at **dash.cloudflare.com** (free).
+2. **Workers & Pages → Create application → Continue with GitHub / Import a repository**.
    GitHub asks you to install the Cloudflare app: choose **Only select repositories** → `laylen-hub`.
-   Then pick the `laylen-hub` repository. (If the buttons are named a bit differently, look for "Pages" and "Connect to Git".)
-3. Settings:
-   - Production branch: `main`
-   - Framework preset: **None**
+3. Select `laylen-hub` → **Next**.
+4. Settings:
+   - Project name: **`laylen-studio`** (must match `name` in `wrangler.jsonc`)
    - Build command: *(leave empty)*
-   - Build output directory: **`services`**
-4. Press **Save and Deploy**. Your page is at `https://<name>.pages.dev`.
-   You can pick the name, for example `laylen-studio.pages.dev`.
+   - Deploy command: `npx wrangler deploy` (the default)
+   - Path / root directory: `/` (the default)
+5. Press **Deploy**. Your page is at `https://laylen-studio.<your-subdomain>.workers.dev`.
+
+If Cloudflare shows the older **Pages** form instead (it asks for "Build output directory"):
+Production branch `main`, Framework preset **None**, Build command empty,
+Build output directory **`services`**. The address is then `https://laylen-studio.pages.dev`.
 
 ## Option B: Netlify Drop (fastest, no Git needed)
 1. Download the `services` folder to your computer.
