@@ -1,7 +1,7 @@
 // ===== EDIT THESE TWO LINES =====
 // WhatsApp number in international format, digits only, starting with 60 (Malaysia).
 // Example: a phone number 012-345 6789 becomes '60123456789'.
-const WHATSAPP_NUMBER = '';
+const WHATSAPP_NUMBER = '60109713667';
 const EMAIL = '';
 // ================================
 
