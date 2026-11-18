@@ -1,6 +1,6 @@
 // Study Hub service worker: makes the app installable and usable offline.
 // Bump CACHE_VERSION whenever app files change so phones pick up the update.
-const CACHE_VERSION = 'study-hub-v2';
+const CACHE_VERSION = 'study-hub-v3';
 const APP_SHELL = [
   './',
   './index.html',

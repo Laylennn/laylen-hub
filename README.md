@@ -13,4 +13,4 @@ When you change app files, bump `CACHE_VERSION` in `sw.js` so installed copies u
 
 ## Earn money: services page
 `services/index.html` is a freelance page for selling websites and dashboards to small businesses (prices in RM, WhatsApp quote form).
-Put your WhatsApp number and email at the top of `services/script.js`, then follow `services/GET-CLIENTS.md`.
+Put your WhatsApp number and email at the top of `services/script.js`, then put it online with `services/DEPLOY.md` (Cloudflare Pages or Netlify) and follow `services/GET-CLIENTS.md`.

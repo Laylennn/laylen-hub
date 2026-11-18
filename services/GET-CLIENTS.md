@@ -4,8 +4,8 @@ Goal: **3 paying clients in 30 days**, working about 5–8 hours a week around c
 
 ## Step 0: Set up (30 minutes)
 1. Open `services/script.js` and fill in the top two lines: your **WhatsApp number** (012-345 6789 becomes `60123456789`) and your **email**. Until you do, the page shows a yellow "Setup needed" bar and the WhatsApp buttons do nothing, so no customer message is lost to a wrong number.
-2. Push to GitHub and turn on GitHub Pages (Settings → Pages → branch `main`, folder `/root`). This is fine for your own portfolio-style page. Host **clients'** business sites on Netlify or Cloudflare Pages instead: GitHub's rules say Pages is not for running businesses.
-   Your page will be at `https://<your-username>.github.io/laylen-hub/services/`.
+2. Put the page online on **Cloudflare Pages or Netlify** (free). Follow `services/DEPLOY.md`; it takes about 10 minutes.
+   Host your clients' sites the same way.
 3. Add that link to your WhatsApp Business profile, Instagram bio and LinkedIn.
 4. Set up DuitNow QR / Touch 'n Go so clients can pay you easily.
 
