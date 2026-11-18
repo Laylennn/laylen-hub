@@ -2,6 +2,8 @@
 
 Goal: **3 paying clients in 30 days**, working about 5–8 hours a week around classes.
 
+**Your live page:** https://laylen-studio.jinlimw.workers.dev
+
 ## Step 0: Set up (30 minutes)
 1. Open `services/script.js` and fill in the top two lines: your **WhatsApp number** (012-345 6789 becomes `60123456789`) and your **email**. Until you do, the page shows a yellow "Setup needed" bar and the WhatsApp buttons do nothing, so no customer message is lost to a wrong number.
 2. Put the page online on **Cloudflare Pages or Netlify** (free). Follow `services/DEPLOY.md`; it takes about 10 minutes.
@@ -27,10 +29,10 @@ Keep a simple list (Google Sheet): Name · Contact · Where found · Messaged? �
 
 ## Step 3: Message 10 businesses a week
 **English**
-> Hi! I'm Laylen, an IT student at UTAR. I noticed [business] doesn't have a website yet. I build simple mobile websites with your menu/prices and a WhatsApp order button, from RM299. Here's an example: [demo link]. Would you like me to make a free preview for you?
+> Hi! I'm Laylen, an IT student at UTAR. I noticed [business] doesn't have a website yet. I build simple mobile websites with your menu/prices and a WhatsApp order button, from RM299. See my services and prices: https://laylen-studio.jinlimw.workers.dev Would you like me to make a free preview for you?
 
 **Bahasa Melayu**
-> Hai! Saya Laylen, pelajar IT di UTAR. Saya perasan [nama bisnes] belum ada laman web. Saya buat laman web mudah untuk telefon, ada menu/harga dan butang order WhatsApp, dari RM299. Contoh: [demo link]. Nak saya buatkan preview percuma?
+> Hai! Saya Laylen, pelajar IT di UTAR. Saya perasan [nama bisnes] belum ada laman web. Saya buat laman web mudah untuk telefon, ada menu/harga dan butang order WhatsApp, dari RM299. Servis dan harga saya: https://laylen-studio.jinlimw.workers.dev Nak saya buatkan preview percuma?
 
 Tip: a **free preview** (a 1-hour mock-up with their name and logo) turns far more "maybe"s into "yes".
 
