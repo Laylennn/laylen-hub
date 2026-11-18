@@ -3,8 +3,8 @@
 Goal: **3 paying clients in 30 days**, working about 5–8 hours a week around classes.
 
 ## Step 0: Set up (30 minutes)
-1. Open `services/script.js` and put your **WhatsApp number** (for example `60123456789`) and **email** on the top two lines.
-2. Push to GitHub and turn on GitHub Pages (Settings → Pages → branch `main`, folder `/root`).
+1. Open `services/script.js` and fill in the top two lines: your **WhatsApp number** (012-345 6789 becomes `60123456789`) and your **email**. Until you do, the page shows a yellow "Setup needed" bar and the WhatsApp buttons do nothing, so no customer message is lost to a wrong number.
+2. Push to GitHub and turn on GitHub Pages (Settings → Pages → branch `main`, folder `/root`). This is fine for your own portfolio-style page. Host **clients'** business sites on Netlify or Cloudflare Pages instead: GitHub's rules say Pages is not for running businesses.
    Your page will be at `https://<your-username>.github.io/laylen-hub/services/`.
 3. Add that link to your WhatsApp Business profile, Instagram bio and LinkedIn.
 4. Set up DuitNow QR / Touch 'n Go so clients can pay you easily.
@@ -18,9 +18,9 @@ Put them under `services/demo-bakery/` and `services/demo-tuition/` and link the
 
 ## Step 2: Find people who need you (every week)
 Who to look for: businesses that **sell on Instagram, Facebook or WhatsApp but have no website**.
-- Your area (Kampar / your hometown): kedai, cafés, tuition centres, salons, car wash, home bakers
+- Your area (near campus / your hometown): kedai, cafés, tuition centres, salons, car wash, home bakers
 - Google Maps: search "bakery near me" and look for listings with **no website**
-- Facebook groups: local buy-and-sell, "Kampar food", UTAR student marketplace
+- Facebook groups: local buy-and-sell, local food groups, UTAR student marketplace
 - Friends and family who run businesses. These are the easiest first yes.
 
 Keep a simple list (Google Sheet): Name · Contact · Where found · Messaged? · Reply · Status.
@@ -54,6 +54,8 @@ Tip: a **free preview** (a 1-hour mock-up with their name and logo) turns far mo
 - **Tutoring juniors** in Excel, intro programming or database subjects you already passed.
 
 ## Rules to protect yourself
+- Register the domain in the **client's** name, and give them every login at the end.
+- Income you earn is taxable: keep a record of every payment and declare it to LHDN (Inland Revenue Board) when you file. When it becomes regular, look into registering with SSM. Ask your faculty or a tax adviser if you're unsure.
 - Always take a deposit before starting.
 - Never build e-commerce/payment systems you can't support. Recommend Shopee/Shopify links instead.
 - Keep the client's login details private and hand them over at the end.
